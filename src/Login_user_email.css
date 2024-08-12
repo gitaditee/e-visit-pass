@@ -1,0 +1,28 @@
+
+.login-form{
+    width: 24%;
+    background-color: rgba(90, 88, 88, 0.577);
+    padding: 50px;
+    border-radius: 20px;
+    margin-top: 100px;
+    display: flex;
+    color: white;
+    flex-direction: column;
+    height:530px;
+    margin-left: 40%;
+}
+#loginbtn{
+    background-color: rgb(65, 98, 65);
+    border-color: rgb(65, 98, 65);
+}
+#register{
+    margin-left:40px; 
+}
+#login{
+    margin-left: 70px;
+   
+}
+#head{
+    background-color: rgba(90, 88, 88, 0.577);
+    color: white;
+}
