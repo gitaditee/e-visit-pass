@@ -1,5 +1,5 @@
 
-Prerequisite before Clonning
+# Prerequisite before Clonning
 
 Install Node.js [https://nodejs.org/en/download/package-manager]
 
@@ -15,7 +15,25 @@ pip install flask pip install mysql-connector-python
 To run the project
 
 npm run dev
-#output
+
+# Technolgies Used
+   # Frontend
+    -HTML
+    -CSS
+    -JAVASCRIPT
+  # FrameWorks
+    -React
+    -Bootstrap 5
+
+  # Backend
+    -Flask (Python)
+  # DataBase
+    -MySQL 
+
+The E-Visitor Pass System is a comprehensive solution developed to manage and generate electronic visitor passes (e-pass). Built using React for the frontend, Flask for the backend, and MySQL for data management, this system streamlines the visitor registration process and simplifies pass generation.
+This system helps organizations enhance their visitor management processes by reducing manual effort, improving security, and ensuring smooth handling of visitor information from registration to entry.
+
+# output
 
 ![Screenshot (384)](https://github.com/user-attachments/assets/d66bc2c1-8467-4e1d-877d-2e2e62dfec6c)
 ![Screenshot (386)](https://github.com/user-attachments/assets/015b3feb-bcd3-40e1-bda3-61cef61d5ba1)
