@@ -5,7 +5,7 @@
 
 2) Install project dependencies for React
 
-npm install npm install react-toastify npm install react-router-dom npm install react-google-recaptcha npm install react-tooltip npm install axios npm install chart.js npm install react-icons npm install react-chartjs-2 npm install bootstrap
+npm install npm install react-toastify npm install react-router-dom npm install react-google-recaptcha npm install react-tooltip npm install axios  npm install react-icons npm install bootstrap
 
 3) Install project dependencies for Flask
 
