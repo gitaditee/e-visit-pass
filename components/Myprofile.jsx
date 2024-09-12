@@ -1,32 +1,35 @@
 import "./MyProfile.css";
 import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
 function Myprofile(){
 
+  
+  const notifySuccess = () => toast.success("Applied Succesfully!");
+  const notifyError = () => toast.error("Fill All Entries!");
   const [formData, setFormData] = useState({
-    first_name: "",
-    second_name: "",
-    father_name: "",
-    date_of_birth: "",
+    firstn: "",
+    secondn: "",
+    fathern: "",
+    dob: "",
     gender: "",
-    blood_group: "",
-    mobile_number: "",
-    landline_number: "",
+    bloodgrup: "",
+    mobileno: "",
+    landline: "",
     email: "",
     password: "",
     address: "",
     city: "",
-    state: "",
-    photo: null,
-    check_me_out: false,
+    state: ""
   });
 
+  
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value, type, checked, files } = e.target;
 
     if (type === "file") {
       setFormData({
         ...formData,
-        [name]: e.target.files[0],
+        [name]: files[0],
       });
     } else {
       setFormData({
@@ -35,55 +38,50 @@ function Myprofile(){
       });
     }
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formDataToSend = new FormData();
-
-    // Append each field to formDataToSend
-    Object.keys(formData).forEach((key) => {
-      if (key === "photo") {
-        if (formData.photo) {
-          formDataToSend.append("photo", formData.photo);
-        }
-      } else {
-        formDataToSend.append(key, formData[key]);
-      }
-    });
+    // Prepare JSON data
+    const jsonData = JSON.stringify(formData);
 
     try {
-      const response = await fetch("http://localhost:5000/api/profile", {
-        method: "POST",
-        body: formDataToSend,
-      });
-      if (response.ok) {
-        console.log("Data submitted successfully");
-        // Optionally, reset the form
-        setFormData({
-          first_name: "",
-          second_name: "",
-          father_name: "",
-          date_of_birth: "",
-          gender: "",
-          blood_group: "",
-          mobile_number: "",
-          landline_number: "",
-          email: "",
-          password: "",
-          address: "",
-          city: "",
-          state: "",
-          photo: null,
-          check_me_out: false,
+        const response = await fetch("http://localhost:5000/home", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: jsonData
         });
-      } else {
-        console.log("Error submitting data");
-      }
+
+        if (response.ok) {
+          notifySuccess();
+            console.log("Profile data received and stored successfully");
+
+            // Optionally, reset the form
+            setFormData({
+                firstn: "",
+                secondn: "",
+                fathern: "",
+                dob: "",
+                gender: "",
+                bloodgrup: "",
+                mobileno: "",
+                landline: "",
+                email: "",
+                password: "",
+                address: "",
+                city: "",
+                state: ""
+            });
+        } else {
+          notifyError();
+            console.log("Error submitting data:", response.statusText);
+        }
     } catch (error) {
-      console.error("Error:", error);
+        console.error("Error:", error);
     }
-  };
+};
+
 
  
     return (
@@ -92,48 +90,48 @@ function Myprofile(){
       <div className="submitform">
         <div className="row">
           <div className="col">
-            <label htmlFor="first_name" className="form-label">First Name</label>
+            <label htmlFor="firstn" className="form-label">First Name</label>
             <input
               type="text"
               className="form-control"
-              name="first_name"
-              value={formData.first_name}
+              name="firstn"
+              value={formData.firstn}
               onChange={handleChange}
               placeholder="First name"
               aria-label="First name"
             />
           </div>
           <div className="col">
-            <label htmlFor="second_name" className="form-label">Second Name</label>
+            <label htmlFor="secondn" className="form-label">Second Name</label>
             <input
               type="text"
               className="form-control"
-              name="second_name"
-              value={formData.second_name}
+              name="secondn"
+              value={formData.secondn}
               onChange={handleChange}
               placeholder="Last name"
               aria-label="Last name"
             />
           </div>
           <div className="col">
-            <label htmlFor="father_name" className="form-label">Father's Name</label>
+            <label htmlFor="fathern" className="form-label">Father's Name</label>
             <input
               type="text"
               className="form-control"
-              name="father_name"
-              value={formData.father_name}
+              name="fathern"
+              value={formData.fathern}
               onChange={handleChange}
               placeholder="Father's name"
               aria-label="Father's name"
             />
           </div>
           <div className="col">
-            <label htmlFor="date_of_birth" className="form-label">Date Of Birth</label>
+            <label htmlFor="dob" className="form-label">Date Of Birth</label>
             <input
               type="date"
               className="form-control"
-              name="date_of_birth"
-              value={formData.date_of_birth}
+              name="dob"
+              value={formData.dob}
               onChange={handleChange}
               placeholder="dd/mm/yyyy"
               aria-label="Date of birth"
@@ -159,12 +157,12 @@ function Myprofile(){
             </select>
           </div>
           <div className="col">
-            <label htmlFor="blood_group" className="form-label">Blood Group</label>
+            <label htmlFor="bloodgrup" className="form-label">Blood Group</label>
             <input
               type="text"
               className="form-control"
-              name="blood_group"
-              value={formData.blood_group}
+              name="bloodgrup"
+              value={formData.bloodgrup}
               onChange={handleChange}
               placeholder="Blood Group"
               aria-label="Blood group"
@@ -175,20 +173,20 @@ function Myprofile(){
             <input
               type="number"
               className="form-control"
-              name="mobile_number"
-              value={formData.mobile_number}
+              name="mobileno"
+              value={formData.mobileno}
               onChange={handleChange}
               placeholder="Mobile Number"
               aria-label="Mobile number"
             />
           </div>
           <div className="col">
-            <label htmlFor="landline_number" className="form-label">Landline No.</label>
+            <label htmlFor="landline" className="form-label">Landline No.</label>
             <input
               type="number"
               className="form-control"
-              name="landline_number"
-              value={formData.landline_number}
+              name="landline"
+              value={formData.landline}
               onChange={handleChange}
               placeholder="Landline No."
               aria-label="Landline number"
@@ -280,6 +278,7 @@ function Myprofile(){
           </div>
           <div className="col-12">
             <button type="submit" className="btn btn-primary">Update</button>
+            <ToastContainer></ToastContainer>
           </div>
         </div>
       </div>

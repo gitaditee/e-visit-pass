@@ -19,7 +19,7 @@ function Home(){
    <div className="content"> 
     <Header></Header>
   {selecttab=== "My Profile" ? <Myprofile></Myprofile> :
-   selecttab === "Apply Pass" ? <Myprofile></Myprofile> : 
+   selecttab === "Apply Pass" ? <Applypass></Applypass> : 
   selecttab === "Applied Pass" ? <Appliedpass></Appliedpass> :
   selecttab === "Print Visitor Pass" ? <Printpass></Printpass> :
   selecttab === "Contact Us" ? <Contact></Contact> : null}

@@ -1,4 +1,4 @@
 body{
     /* background-color:rgba(255,0,0, 0.3); */
-    background: url('images/tata-steel-plant-overview_banner.jpg' ) no-repeat center center/cover;
+    background: url('./public/images/tata-steel-plant-overview_banner.jpg' ) no-repeat center center/cover;
 } 
